@@ -1,0 +1,10 @@
+## appversion mm.yy.dateofdeployment
+server:
+  Host: localhost
+  Port: 8080
+  ReadTimeout: 5
+  WriteTimeout: 5
+  SSL: false
+  CtxDefaultTimeout: 12
+  AppVersion: 08.22.00
+  Debug: false

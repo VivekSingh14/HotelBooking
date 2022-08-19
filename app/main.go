@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+
+	"github.com/Community/hotel-booking/config"
 )
 
 //adding comment
@@ -15,6 +18,17 @@ func check(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	log.Println("Starting api server.")
+
+	cfg, err := config.GetConfig()
+
+	if err != nil {
+		log.Fatalf("LoadConfig: %v", err)
+	} else {
+		fmt.Println("config loaded successfully.")
+	}
+	fmt.Printf("AppVersion: %s \n", cfg.Server.AppVersion)
 	http.HandleFunc("/", index)
 	http.HandleFunc("/health", check)
 	fmt.Println("Server starting...")

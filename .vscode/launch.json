@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "main.go",
+            "program": "app/main.go",
             "buildFlags": "-tags dynamic"
         }
     ]
