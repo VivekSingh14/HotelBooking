@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//adding comment
 type Server struct {
 	config *config.Config
 	router *mux.Router
