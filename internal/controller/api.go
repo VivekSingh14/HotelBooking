@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"context"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/Community/hotel-booking/config"
@@ -10,17 +10,21 @@ import (
 )
 
 func RegisterHandlers(router *mux.Router, config *config.Config) {
-	service := NewBookingController(context.Background(), config)
+
+	router.HandleFunc("/health", HealthCheck).Methods(http.MethodGet)
+	http.Handle("/", router)
 
 	bookingRouter := router.PathPrefix("/booking/v1").Subrouter()
 
-	bookingEndpoints(bookingRouter, service)
+	bookingEndpoints(bookingRouter)
 }
 
-func bookingEndpoints(bookingRouter *mux.Router, service *BookingService) {
-	bookingRouter.HandleFunc("/health", check).Methods(http.MethodGet)
+func bookingEndpoints(bookingRouter *mux.Router) {
+	bookingRouter.HandleFunc("/health", HealthCheck).Methods(http.MethodGet)
 }
 
-func check(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Health Check </h1>")
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	log.Println("entering health check end point")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "API is up and running")
 }
