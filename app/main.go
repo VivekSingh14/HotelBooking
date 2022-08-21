@@ -8,6 +8,7 @@ import (
 	"github.com/Community/hotel-booking/internal/server"
 )
 
+//adding comment
 func main() {
 
 	log.Println("Starting api server.")
