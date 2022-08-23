@@ -33,11 +33,16 @@ func GetConfig() (*Config, error) {
 }
 
 func loadConfig() (*Config, error) {
+	os.Setenv("config", "local")
+	test := os.Getenv("config")
+	log.Println(test)
 	configPath := getConfigPath(os.Getenv("config"))
 	v := viper.New()
 	v.SetConfigName(configPath)
 	v.AddConfigPath(".")
 	v.AutomaticEnv()
+	log.Println(v.ReadInConfig())
+
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			return nil, errors.New("config file not found")

@@ -2,12 +2,24 @@ package controller
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 )
 
 func (s *BookingService) HealthCheck(w http.ResponseWriter, r *http.Request) {
-	log.Println("entering health check end point")
+
+	//daoService := s.GetDAOService()
+
+	//context := gorillactx.Get(r, "temp").(context.Context)
+	//context := context.Background().Done()
+
+	// res, err := daoService.BookingRepository.GetHealthCheck()
+
+	// if err != nil {
+	// 	log.Printf("error occured %d", err)
+	// 	return
+	// }
+
+	//log.Printf("entering health check end point %v \n", res)
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "API is up and running")
+	fmt.Fprintf(w, "Health is good.")
 }
