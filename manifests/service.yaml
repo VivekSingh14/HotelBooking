@@ -5,7 +5,6 @@ metadata:
 spec:
   type: NodePort
   selector:
-    matchLabels:
       app: go-app
   ports:
     - port: 8080
