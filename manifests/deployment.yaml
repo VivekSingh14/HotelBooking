@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: go-app-container
-        image: vivek1411/go-app2
+        image: vivek1411/hotelbooking:latest
         resources:
           limits:
             memory: "128Mi"
