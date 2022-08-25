@@ -27,8 +27,8 @@ jobs:
 
     # Configure Workload Identity Federation and generate an access token.
     - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
-        with:
+      uses: google-github-actions/setup-gcloud@master
+      with:
           project_id: ${{ secrets.GKE_PROJECT }}
           service_account_key: ${{ secrets.GKE_SA_KEY }}
           export_default_credentials: true
