@@ -1,17 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dwk-environments
+  name: gke-hotel-booking
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dwk-environments
+      app: go-app
   template:
     metadata:
       labels:
-        app: dwk-environments
+        app: go-app
     spec:
       containers:
-        - name: dwk-environments
-          image: jakousa/colorcontent
+      - name: go-app-container
+        image: vivek1411/go-app2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
